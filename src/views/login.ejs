@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+    <%- include('./Components/Head', { title: 'Home' }) %>
+
+    <body>
+        <div class="container d-flex flex-column justify-content-center h-100 text-dark">
+            <form action="/auth" method="POST">
+            <div class="text-center mb-4">
+                <img class="mb-4 rounded-circle" src="https://avatars.githubusercontent.com/u/31000120?v=4" alt="Author" width="120" height="120">
+                <h3 class="mb-3 font-weight-normal">Computer Science Login</h3>
+            </div>
+
+            <% if (typeof loginerror !== 'undefined') { %>
+
+                <h5 class="text-center text-danger mb-4">Incorrect Credentials</h5>
+
+            <% } else if (typeof accountcreated !== 'undefined') { %>
+
+                <h5 class="text-center text-success mb-4">Account Created</h5>
+
+            <% } %>
+
+            <div class="form-floating mb-3">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+            <button class="btn btn-lg btn-primary btn-block w-100" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted text-center">&copy; 2021 Sean McGinty | <a href="../">Homepage</a></p>
+            </form>
+        </div>
+</body>
+</html> 

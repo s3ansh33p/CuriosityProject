@@ -6,7 +6,7 @@ const path = require('path')
 const Router = require('./Router');
 const Logger = require('../util/Logger')
 const fs = require('fs').promises;
-const axios = require('axios')
+const sha = require('../util/sha512');
 require('dotenv').config()
 
 
@@ -60,6 +60,24 @@ class App {
                 path: req.path,
                 version: packageConf.version
             })
+        })
+
+        this.app.get('/login', function (req, res) {
+            res.render('login.ejs')
+        })
+
+        this.app.post('/auth', function (req, res) {
+            if (req.body.email === undefined || req.body.password === undefined) {
+                res.redirect('/login');
+            } else if (req.body.email.length === 0 || req.body.password.length === 0) {
+                res.json({
+                    'status': 400
+                })
+            } else {
+                // Send the data to the database
+                res.send(req.body.password);
+                Logger.info(sha.saltHashPassword(req.body.password));
+            }
         })
 
     }
