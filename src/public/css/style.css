@@ -1,0 +1,39 @@
+:root {
+  --background: #f8f9fa;
+  --nav: #22272E;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Rubik, -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Roboto, system-ui, sans-serif;
+  background: var(--background) !important;
+}
+
+.logo-text {
+  font-size: 1.6rem !important;
+  line-height: 2rem;
+  font-family: "IBM Plex Sans", Roboto, system-ui, sans-serif;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  text-decoration: none !important;
+  --tw-text-opacity: 1 !important;
+  color: rgba(201.756, 209.1, 216.444, var(--tw-text-opacity)) !important;
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms;
+}
+
+.navbar-dark {
+  background-color: var(--nav);
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

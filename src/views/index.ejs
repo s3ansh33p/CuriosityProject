@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./Components/Head', { title: 'Home' }) %>
+    <%- include('./Components/Navbar') %>
+        <%- include('./Components/Noscript') %>
+
+            <body class="text-dark">
+                <div class="container my-3">
+                    <h1>Hello World</h1>
+                </div>
+                <%- include('./Components/Footer') %>
+                <script src="../public/js/home.js"></script>
+                <script src="../public/js/utils/logger.js"></script>
+            </body>
