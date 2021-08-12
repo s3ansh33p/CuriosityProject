@@ -28,6 +28,6 @@ CREATE TABLE IF NOT EXISTS stats (
 CREATE TABLE IF NOT EXISTS updates (
     id          int(8) AUTO_INCREMENT NOT NULL PRIMARY KEY,
     uuid        int(8) NOT NULL,
-    val         text(64) NOT NULL
+    val         text(64) NOT NULL,
     added       timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

@@ -6,8 +6,8 @@ const path = require('path')
 const Router = require('./Router');
 const Logger = require('../util/Logger')
 const fs = require('fs').promises;
-const sha = require('../util/sha512');
-require('dotenv').config()
+const aes = require('../util/aes256');
+require('dotenv').config();
 
 
 class App {
@@ -65,6 +65,14 @@ class App {
         this.app.get('/login', function (req, res) {
             res.render('login.ejs')
         })
+        
+        this.app.get('/home', function (req, res) {
+            res.render('panel.ejs');
+        })
+        
+        this.app.get('/shell', function (req, res) {
+            res.render('shell.ejs')
+        })
 
         this.app.post('/auth', function (req, res) {
             if (req.body.email === undefined || req.body.password === undefined) {
@@ -76,7 +84,7 @@ class App {
             } else {
                 // Send the data to the database
                 res.send(req.body.password);
-                Logger.info(sha.saltHashPassword(req.body.password));
+                Logger.info(aes.encrypt(req.body.password));
             }
         })
 
