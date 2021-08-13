@@ -1,18 +1,19 @@
 Chart.defaults.global.defaultFontFamily = "Lato";
 
+const ctxH1 = document.getElementById("ctx-panel-2");
 const graphBG = '#198754';
-const horizontalBarChart = new Chart(horizontalBarChartCanvas, {
+const horizontalBarChart = new Chart(ctxH1, {
    type: 'horizontalBar',
    data: {
       labels: ["Critical Thinking","Creativity","Commitment","Communication","Collaboration","Citizenship","Continuous Improvement"],
       datasets: [{
-         data: [2, 4, 6, 8, 17, 12, 14],
+         data: [2, 4, 6, 8, 13, 12, 14],
          backgroundColor: [graphBG, graphBG, graphBG, graphBG, graphBG, graphBG, graphBG], 
       }]
    },
    options: {
       tooltips: {
-        enabled: false
+        enabled: true
       },
       responsive: true,
       legend: {
@@ -51,6 +52,8 @@ const horizontalBarChart = new Chart(horizontalBarChartCanvas, {
              fontColor: '#555759',
              fontFamily: 'Lato',
              fontSize: 11,
+             max: 17,
+             stepSize: 1
             //  callback: function(label, index, labels) {
             //   return label;
             //  }

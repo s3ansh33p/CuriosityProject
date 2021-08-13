@@ -1,135 +1,3 @@
-var objClasses = [
-    {
-        code: "AEIND",
-        subject: "Indonesian",
-        year: 11,
-        teacher: "3",
-        schoolBox: "https://schoolbox.wesley.wa.edu.au/homepage/8446",
-        dateYear: 2021,
-        students: [
-            {
-                studentID: 1,
-                firstname: "John",
-                surname: "Doe",
-                c: [12,13,9,8,14,15,12]
-            },
-            {
-                studentID: 2,
-                firstname: "Maddox",
-                surname: "Best",
-                c: [8,9,11,12,9,10,10]
-            },
-            {
-                studentID: 3,
-                firstname: "Faye",
-                surname: "Hobbs",
-                c: [11,12,13,10,14,14,12]
-            },
-            {
-                studentID: 4,
-                firstname: "Velma",
-                surname: "Coles",
-                c: [10,10,8,12,13,8,9]
-            },
-            {
-                studentID: 5,
-                firstname: "Murray",
-                surname: "Bernal",
-                c: [13,12,14,13,10,15,12]
-            },
-            {
-                studentID: 6,
-                firstname: "Hendrix",
-                surname: "Sqruires",
-                c: [15,15,14,14,15,12,13]
-            },
-            {
-                studentID: 7,
-                firstname: "Sean",
-                surname: "McGinty",
-                c: [15,13,15,14,12,10,11]
-            },
-            {
-                studentID: 8,
-                firstname: "Natalia",
-                surname: "Green",
-                c: [12,14,14,12,13,9,10]
-            },
-            {
-                studentID: 9,
-                firstname: "Joel",
-                surname: "Todd",
-                c: [15,15,13,14,12,12,13]
-            },
-            {
-                studentID: 10,
-                firstname: "Zidan",
-                surname: "Leal",
-                c: [14,13,12,14,13,12,10]
-            },
-            {
-                studentID: 11,
-                firstname: "Julian",
-                surname: "Stevenson",
-                c: [14,14,13,15,12,10,12]
-            }
-        ]
-    },
-    {
-        code: "9CHI212",
-        subject: "Chinese",
-        year: 9,
-        teacher: "3",
-        schoolBox: "https://schoolbox.wesley.wa.edu.au/homepage/link_goes_here",
-        dateYear: 2021,
-        students: [
-            {
-                studentID: 1,
-                firstname: "John",
-                surname: "Doe",
-                c: [12,13,9,8,14,15,12]
-            },
-            {
-                studentID: 2,
-                firstname: "Maddox",
-                surname: "Best",
-                c: [8,9,11,12,9,10,10]
-            }
-        ]
-    },
-    {
-        code: "8FRE122",
-        subject: "French",
-        year: 8,
-        teacher: "4",
-        schoolBox: "https://schoolbox.wesley.wa.edu.au/homepage/link_goes_here",
-        dateYear: 2021,
-        students: [
-            {
-                studentID: 4,
-                firstname: "Velma",
-                surname: "Coles",
-                c: [10,10,8,12,13,8,9]
-            },
-            {
-                studentID: 5,
-                firstname: "Murray",
-                surname: "Bernal",
-                c: [13,12,14,13,10,15,12]
-            },
-            {
-                studentID: 6,
-                firstname: "Hendrix",
-                surname: "Sqruires",
-                c: [15,15,14,14,15,12,13]
-            }
-        ]
-    }
-]
-
-
-
-
 // Need to refactor
 function genClassReportWithID(classReportID){
     var pdf = new jsPDF({ filters: ["ASCIIHexEncode"] }),
@@ -141,7 +9,7 @@ function genClassReportWithID(classReportID){
         date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
         //Set properties on the document
         pdfTitle = "7Cs Class Report [Generated: " + date + "]";
-        pdfName = "7Cs Report Year " + objClasses[classReportID].year + " " +  objClasses[classReportID].subject + " (" + objClasses[classReportID].code + ")"
+        pdfName = "7Cs Report Year " + classData.year + " " +  classData.subject + " (" + classData.code + ")"
     
         pdf.setProperties({
             title: pdfTitle,
@@ -157,7 +25,7 @@ function genClassReportWithID(classReportID){
         pdf.addImage(imgWesleyLogo, 'JPEG', 190-392/9.5, 248, 392/9.5, 261/9.5)
     
         //Cover Page
-        pdfClassHeader = "Year " + objClasses[classReportID].year + " " + objClasses[classReportID].subject + " (" + objClasses[classReportID].code + ")";
+        pdfClassHeader = "Year " + classData.year + " " + classData.subject + " (" + classData.code + ")";
     
         //Get Teacher
         teacher = "TEST TEACHER"
@@ -210,10 +78,10 @@ function genClassReportWithID(classReportID){
         for (i=0; i<7; i++) {
             classAverageScore = 0;
             //Each Student
-            for (j=0; j<objClasses[classReportID].students.length; j++) {
-                classAverageScore += objClasses[classReportID].students[j].c[i]
+            for (j=0; j<classData.students.length; j++) {
+                classAverageScore += classData.students[j].c[i]
             }
-            classAverageScore /= objClasses[classReportID].students.length
+            classAverageScore /= classData.students.length
             classAverageScore = Math.round(classAverageScore * 100)/100;
             classAverages[i] = classAverageScore.toString();
         }
@@ -239,7 +107,7 @@ function genClassReportWithID(classReportID){
         pdf.line(15, verticalOffset, 195, verticalOffset);
     
         //Loop through students
-        for (reportingStudent=0; reportingStudent<objClasses[classReportID].students.length; reportingStudent++){
+        for (reportingStudent=0; reportingStudent<classData.students.length; reportingStudent++){
             //Check to see if page header is needed
             if (reportingStudent % 3 == 0) {
                 //Footer
@@ -270,7 +138,7 @@ function genClassReportWithID(classReportID){
             //Student Data First Person
             pdf.setFontSize(13);
             pdf.setFontStyle("bold");
-            pdf.text(margin, 52 + ymod, objClasses[classReportID].students[reportingStudent].firstname + " " + objClasses[classReportID].students[reportingStudent].surname);
+            pdf.text(margin, 52 + ymod, classData.students[reportingStudent].firstname + " " + classData.students[reportingStudent].surname);
             pdf.setDrawColor(76,140,43);
             pdf.setLineWidth(1);
             pdf.line(margin, 54 + ymod, 195, 54 + ymod);
@@ -305,10 +173,10 @@ function genClassReportWithID(classReportID){
     
                     pdf.setFillColor(0, 0, 0)
                     //Check if double digit
-                    if (objClasses[classReportID].students[reportingStudent].c[i] < 10) {
-                        pdf.circle(margin + 73.75 + (objClasses[classReportID].students[reportingStudent].c[i] - 1) * 12.5/2, verticalOffset + i * spacing + 11.5 / 72 - 2 + ymod, 1.5, 'F')
+                    if (classData.students[reportingStudent].c[i] < 10) {
+                        pdf.circle(margin + 73.75 + (classData.students[reportingStudent].c[i] - 1) * 12.5/2, verticalOffset + i * spacing + 11.5 / 72 - 2 + ymod, 1.5, 'F')
                     } else {
-                        pdf.circle(margin + 73.75 + (objClasses[classReportID].students[reportingStudent].c[i] - 1) * 12.5/2 + 1, verticalOffset + i * spacing + 11.5 / 72 - 2 + ymod, 1.5, 'F')
+                        pdf.circle(margin + 73.75 + (classData.students[reportingStudent].c[i] - 1) * 12.5/2 + 1, verticalOffset + i * spacing + 11.5 / 72 - 2 + ymod, 1.5, 'F')
                     }
     
                     verticalOffset +=  spacing * 11.5 / 72;

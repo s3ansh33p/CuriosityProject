@@ -66,7 +66,7 @@ If you have any feedback, please reach out to me at newfolderlocation@gmail.com
 
 ## Roadmap
 
-- TBA
+- Add color bar charts in the reports
 
   
 ## Run Locally
