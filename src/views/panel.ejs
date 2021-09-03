@@ -16,7 +16,7 @@
                   <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
                       <button type="button" class="btn btn-sm btn-outline-dark">Share</button>
-                      <button type="button" class="btn btn-sm btn-outline-dark">Export</button>
+                      <button type="button" class="btn btn-sm btn-outline-dark" onclick="genClassReportWithID();">Export</button>
                     </div>
                     <button type="button" class="btn btn-sm btn-outline-dark dropdown-toggle" id="dropdownHome" data-bs-toggle="dropdown" aria-expanded="false">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -34,13 +34,15 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-xs-12 col-md-6">
-                    <canvas id="ctx-panel" style="height: 250px;"></canvas>
+                  <div class="col-12">
+                    <figure class="highcharts-figure card">
+                      <div id="ctx-panel"></div>
+                    </figure>
                   </div>
-                  <div class="col-xs-12 col-md-6">
+                  <div class="col-12 my-4">
                     <div class="card">
                       <div class="card-body" id="ajax-students">
-                        <h5 class="d-flex align-items-center text-decoration-none justify-content-center">Students</h5>
+                        <h3 class="d-flex align-items-center text-decoration-none justify-content-center">Students</h3>
 
                       </div>
                     </div>
@@ -53,11 +55,13 @@
           </div>
 		
           <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+          <script src="https://code.highcharts.com/highcharts.js"></script>
+          <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
         <script src="/public/js/7c.js"></script>
         <!-- <script src="/public/js/data.js"></script> -->
         <script src="/public/js/ui.js"></script>
         <script src="/public/js/load.js"></script>
         <script src="/public/js/pdf.js"></script>
-        <script src="/public/js/vendor/jspdf.debug.js"></script>
+        <script src="/public/js/vendor/jspdf.umd.min.js"></script>
 	</body>
 </html>

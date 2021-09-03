@@ -41,19 +41,19 @@ class API extends Router {
                             studentID: 1,
                             firstname: "John",
                             surname: "Doe",
-                            c: [12,13,9,8,14,15,12]
+                            c: [1,2,3,4,5,6,7]
                         },
                         {
                             studentID: 2,
                             firstname: "Maddox",
                             surname: "Best",
-                            c: [8,9,11,12,9,10,10]
+                            c: [8,9,10,11,12,13,14]
                         },
                         {
                             studentID: 3,
                             firstname: "Faye",
                             surname: "Hobbs",
-                            c: [11,12,13,10,14,14,12]
+                            c: [15,16,17,10,14,14,12]
                         },
                         {
                             studentID: 4,

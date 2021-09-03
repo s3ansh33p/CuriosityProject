@@ -11,10 +11,10 @@ var objClasses = [
                 studentID: 1,
                 firstname: "John",
                 surname: "Doe",
-                c: [12,13,9,8,14,15,12]
+                c: [12,3,6,8,14,15,12]
             },
             {
-                studentID: 2,
+                studentID: 2, 
                 firstname: "Maddox",
                 surname: "Best",
                 c: [8,9,11,12,9,10,10]

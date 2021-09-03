@@ -70,6 +70,10 @@ class App {
             res.render('panel.ejs');
         })
         
+        this.app.get('/student', function (req, res) {
+            res.render('student.ejs');
+        })
+        
         this.app.get('/shell', function (req, res) {
             res.render('shell.ejs')
         })

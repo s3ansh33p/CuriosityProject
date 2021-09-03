@@ -1,25 +1,30 @@
 let classData;
 
+let curStudent =  new URL(window.location.href).searchParams.get("id");
+if (!curStudent) {
+    window.location.href = "/home";
+}
+
+// End point should be changed
 $.get("/api/students", function(data, status){
     Utils7C.info("Load student data: " + status);
+    $('#student-name').text(`${data.students[curStudent-1].firstname} ${data.students[curStudent-1].surname}`);
     classData = data;
-    const container = document.getElementById("ajax-students");
+    const container = document.getElementById("ajax-history");
     for (let i=0; i<data.students.length; i++) {
         container.innerHTML += `<div class="row">
             <div class="col-12 d-flex justify-content-between w-100 mb-3">
                 <div class="d-flex align-items-center">    
-                    <div class="me-3">
-                        <img class="rounded-circle" src="public/static/author.png" width="75px">
-                    </div>
                     <div>
                         <span>
-                            <div class="text-decoration-none">${data.students[i].firstname + ' ' + data.students[i].surname}</div>
-                            <div class="small text-gray-500 text-decoration-none">Average Rating: ${Utils7C.formatNumber(Utils7C.arrayAverage(data.students[i].c), 2)}</div>
+                            <div class="h5 mb-0">${Utils7C.categories[Math.floor(Math.random()*7)]}</div>
+                            <div class="small text-gray-500">Rating: ${Math.floor(Math.random()*17)}</div>
+                            <div class="small text-gray-500">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores possimus quaerat quia commodi ullam sunt at consectetur cupiditate accusamus necessitatibus excepturi, consequatur in tenetur asperiores eaque nostrum dolorem voluptas iure!</div>
                         </span>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
-                    <a href="/student?id=${(i+1)}" class="btn btn-primary">Manage</a>
+                    <a onclick="alert('Show modal to confirm deletion: ${(i+1)}')" class="btn btn-danger">Delete</a>
                 </div>
             </div>
       </div>`;
@@ -30,7 +35,7 @@ $.get("/api/students", function(data, status){
         generatedPieData.push({
             name: Utils7C.categories[i],
             y: 1,
-            z: 10+i,
+            z: Math.ceil(Math.random()*17),
             color: Utils7C.colors[i]
           })
     }
@@ -43,7 +48,7 @@ $.get("/api/students", function(data, status){
             enabled: false
         },
         title: {
-          text: 'Average rating across the 7Cs'
+          text: 'Average student rating across the 7Cs'
         },
         tooltip: {
           headerFormat: '',
